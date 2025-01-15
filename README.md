@@ -19,7 +19,48 @@
 
 1. 确保你的环境中已安装 OpenResty 和 LuaRocks。  
    Make sure OpenResty and LuaRocks are installed in your environment.
-2. 将 `exactSQL.lua` 放入你的 `lua_package_path` 中，或者用 LuaRocks 安装：  
-   Place `exactSQL.lua` in your `lua_package_path`, or install it via LuaRocks:
+2. 将 `exact.lua` 放入你的 `lua_package_path` 中，或者用 LuaRocks 安装：  
+   Place `exact.lua` in your `lua_package_path`, or install it via LuaRocks:
    ```bash
    luarocks install exactSQL
+
+## 使用方法 / Usage
+
+```lua
+local exactSql = require "exactSQL"
+
+-- 定义 SQL 模板 / Define the SQL template
+local view = [[
+SELECT * FROM users WHERE 1=1
+{% if name then %}
+    AND name = {{ exactSql.format_param(name) }}
+{% end %}
+{% if ages then %}
+    AND age IN ( {{ exactSql.format_param(ages) }} )
+{% end %}
+]]
+
+-- 定义参数 / Define parameters
+local params = {
+    name = "name",
+    ages = {25, 30, 35},
+    exactSql = exactSql
+}
+
+-- 生成最终的 SQL / Generate the final SQL
+local rendered_sql, err = exactSql.build(view, params)
+if not rendered_sql then
+    ngx.log(ngx.ERR, "SQL generation error: ", err)
+else
+    ngx.say(rendered_sql)
+end
+
+```
+
+## 输出 / Output
+
+``` sql
+SELECT * FROM users WHERE 1=1
+    AND name = 'name'
+    AND age IN ( 25, 30, 35 )
+```
