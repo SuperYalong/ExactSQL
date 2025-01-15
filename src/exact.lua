@@ -30,11 +30,7 @@ function _M.format_param(value)
 end
 
 function _M.build(sql_template, params)
-    local compiled, err = template.compile(sql_template)
-    if err then
-        return nil, err
-    end
-    return compiled(params)
+    return template.compile(sql_template)(params)
 end
 
 return _M
