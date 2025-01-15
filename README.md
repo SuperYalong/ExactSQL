@@ -1,2 +1,2 @@
 # ExactSQL
-a light SQL builder
+a light SQL builder based on lua
