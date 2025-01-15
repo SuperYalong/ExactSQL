@@ -118,8 +118,8 @@ Use `exactSql.format_param` within templates to safely format parameters.
 
 ## 贡献 / Contributing
 
-我们欢迎任何形式的贡献！如果你发现问题、希望添加新功能或者改进文档，可以直接提 [Issues](https://github.com/your-repo/exactSQL/issues) 或提交 PR。  
-We welcome all forms of contributions! If you find issues, want to suggest features, or improve documentation, please submit an [Issue](https://github.com/your-repo/exactSQL/issues) or open a PR.
+我们欢迎任何形式的贡献！如果你发现问题、希望添加新功能或者改进文档，可以直接提 [Issues](https://github.com/SuperYalong/ExactSQL/issues) 或提交 PR。  
+We welcome all forms of contributions! If you find issues, want to suggest features, or improve documentation, please submit an [Issue](https://github.com/SuperYalong/ExactSQL/issues) or open a PR.
 
 ## 许可协议 / License
 
